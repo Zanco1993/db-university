@@ -63,3 +63,10 @@ FROM `departments`;
 SELECT `id`, `name`, `surname`
 FROM `teachers`
 WHERE `phone` IS NULL;
+
+-- per il conteggio invece
+
+SELECT COUNT(`id`) AS num_teachers_no_phone
+FROM `teachers` 
+WHERE `phone` IS NULL;
+
