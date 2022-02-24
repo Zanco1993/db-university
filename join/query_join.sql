@@ -52,12 +52,11 @@ ORDER BY `course_teacher`.`teacher_id` ASC;
 -- 7. BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
 --    superare ciascuno dei suoi esami
 
--- SELECT `students`.`id` AS `codice_studente`,  COUNT(`exam_student`.`vote`) AS `num_esami_non_passati`
--- FROM `students`
--- LEFT JOIN `exam_student`
--- 	ON `students`.`id` = `exam_student`.`student_id`
--- LEFT JOIN `exams`
--- 	ON `exam_student`.`exam_id` = `exams`.`id`
--- GROUP BY `students`.`id`;
-
+SELECT `students`.`id` AS `codice_studente`, `exams`.`course_id` AS `codice_materia`, COUNT(`exams`.`id`) AS `numero_tentativi_appello`
+FROM `students`
+INNER JOIN `exam_student`
+	ON `students`.`id` = `exam_student`.`student_id`
+INNER JOIN `exams`
+	ON `exam_student`.`exam_id` = `exams`.`id`
+GROUP BY `students`.`id`, `exams`.`course_id`;
 
